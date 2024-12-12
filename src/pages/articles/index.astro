@@ -5,11 +5,20 @@ import ArticleCard from "../../components/ArticleCard.astro";
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from "astro:content";
 
-const currentPage: number | null = +Astro.url.searchParams.get('page')! || 1;
+// Articles per page
+const articlesPerPage = 10;
 
+// Get and sort all blog articles by publication date
 const allBlogArticles: CollectionEntry<'blog'>[] = (await getCollection('blog'))
-  .sort((a:CollectionEntry<'blog'>, b:CollectionEntry<'blog'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
+// Get the current page from the URL or default to 1
+const currentPage: number = +Astro.url.searchParams.get('page')! || 1;
+
+// Calculate the range of articles to display based on the current page
+const startIndex = (currentPage - 1) * articlesPerPage;
+const endIndex = currentPage * articlesPerPage;
+const articlesToDisplay = allBlogArticles.slice(startIndex, endIndex);
 ---
 
 <Layout title="Positivus - Blog">
@@ -21,10 +30,16 @@ const allBlogArticles: CollectionEntry<'blog'>[] = (await getCollection('blog'))
                     <p class="font-light text-gray-500 sm:text-xl">We use an agile approach to test assumptions and connect with the needs of your audience early and often.</p>
                 </div>
                 <div class="grid gap-8 lg:grid-cols-2">
-                    {allBlogArticles.map(article => (
+                    {articlesToDisplay.map(article => (
                         <ArticleCard article={article} />
                     ))}
-                </div>  
+                </div>
+
+                {/* Pagination controls */}
+                <div class="flex justify-center mt-8">
+                    <a href={`?page=${currentPage - 1}`} class="mr-4">Previous</a>
+                    <a href={`?page=${currentPage + 1}`} class="ml-4">Next</a>
+                </div>
             </div>
         </Container>
 	</main>
