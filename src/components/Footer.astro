@@ -1,24 +1,38 @@
 ---
-import Container from "./Container.astro"
+import Social from './Social.astro';
+import Container from './Container.astro';
+
+const platform = "github";
+const username = "withastro";
 ---
-<footer class="bg-lime bg-fixed bg-bottom text-black">
-    <Container>
-    <div class="py-6">
-        <div class="flex flex-col items-center justify-between md:flex-row">
-            <div class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img class="w-auto" src="/Logo.svg" alt="Logo">
-            </div>
-            <div class="flex mt-4 md:m-0">
-                <div class="-mx-4">
-                    @ <span id="currentYear"></span> Zhive249 | Made with <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="underline">Astro</a></div>
-                </div>
-            </div>
+
+<footer class="bg-blue-800 text-black">
+  <Container>
+    <div class="py-12">
+      <div class="flex flex-col items-center justify-between space-y-8 md:flex-row md:space-y-0 md:items-start">
+        <div class="flex items-center space-x-4 text-center md:text-left">
+          <img class="w-16 h-16" src="/Logo.svg" alt="Zhive249 Logo" />
+          <h1 class="text-4xl font-bold md:text-3xl">
+            <span class="text-custom-blue font-extrabold">Zhive</span>
+            <span class="text-custom-orange text-4xl font-extrabold inline-block">249</span>
+          </h1>
         </div>
+
+        <!-- Using the Social Component Three Times with Different Props -->
+        <div class="flex space-x-8 mt-4 md:mt-0">
+          <Social platform="github" username={username} />
+          <Social platform="facebook" username="Zhive249" />
+          <Social platform="instagram" username="Zhive249" />
+        </div>
+      </div>
+
+      <!-- Copyright Notice -->
+      <div class="mt-8 text-center text-sm text-gray-300">
+        &copy; {new Date().getFullYear()} Zhive249. Made with ❤️ using 
+        <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="underline text-custom-blue hover:text-white transition-colors duration-300">Astro</a>.
+      </div>
     </div>
-    </Container>
+  </Container>
 </footer>
 
-<script is:inline>
-    const year = new Date().getFullYear();
-    document.getElementById("currentYear").innerHTML = `${year}`;
-</script>
+<!-- TODO: fix this ugly footer -->

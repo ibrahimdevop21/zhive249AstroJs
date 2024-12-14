@@ -1,56 +1,62 @@
 [
-    {
-        "id": 1,
-        "name1": "Search engine",
-        "name2": "optimization",
-        "background": "h-[310px] p-12 bg-zinc-100 rounded-[45px] shadow-card border border-black justify-between items-center flex text-black",
-        "arrow": "./services/ag.svg",
-        "link": "./",
-        "image": "./services/01.svg"
-    },
-    {
-        "id": 2,
-        "name1": "Pay-per-click",
-        "name2": "advertising",
-        "background": "h-[310px] p-12 bg-lime rounded-[45px] shadow-card border border-black justify-between items-center flex text-black",
-        "arrow": "./services/ag.svg",
-        "link": "./",
-        "image": "./services/02.svg"
-    },
-    {
-        "id": 3,
-        "name1": "Social Media",
-        "name2": "Marketing",
-        "background": "h-[310px] p-12 bg-black rounded-[45px] shadow-card border border-black justify-between items-center flex text-white",
-        "arrow": "./services/aw.svg",
-        "link": "./",
-        "image": "./services/03.svg"
-    },
-    {
-        "id": 4,
-        "name1": "Email",
-        "name2": "Marketing",
-        "background": "h-[310px] p-12 bg-zinc-100 rounded-[45px] shadow-card border border-black justify-between items-center flex text-black",
-        "arrow": "./services/ag.svg",
-        "link": "./",
-        "image": "./services/04.svg"
-    },
-    {
-        "id": 5,
-        "name1": "Content",
-        "name2": "Creation",
-        "background": "h-[310px] p-12 bg-lime rounded-[45px] shadow-card border border-black justify-between items-center flex text-black",
-        "arrow": "./services/ag.svg",
-        "link": "./",
-        "image": "./services/05.svg"
-    },
-    {
-        "id": 6,
-        "name1": "Analytics and",
-        "name2": "Tracking",
-        "background": "h-[310px] p-12 bg-black rounded-[45px] shadow-card border border-black justify-between items-center flex text-white",
-        "arrow": "./services/aw.svg",
-        "link": "./",
-        "image": "./services/06.svg"
-    }
+  {
+    "id": 1,
+    "name1": "Creative Branding",
+    "name2": "& Design",
+    "background": "h-[310px] p-12 bg-zinc-100 rounded-[45px] shadow-card border border-black justify-between items-center flex text-black",
+    "arrow": "./services/ag.svg",
+    "link": "/services/creative-branding",
+    "image": "./services/01.svg",
+    "description": "We specialize in creative branding and design that tells your brand's story and resonates with your audience."
+  },
+  {
+    "id": 2,
+    "name1": "Market Research",
+    "name2": "& Strategy",
+    "background": "h-[310px] p-12 bg-lime rounded-[45px] shadow-card border border-black justify-between items-center flex text-black",
+    "arrow": "./services/ag.svg",
+    "link": "/services/market-research",
+    "image": "./services/02.svg",
+    "description": "Our market research services provide valuable insights to inform your business strategy and drive growth."
+  },
+  {
+    "id": 3,
+    "name1": "Digital Marketing",
+    "name2": "& Advertising",
+    "background": "h-[310px] p-12 bg-black rounded-[45px] shadow-card border border-black justify-between items-center flex text-white",
+    "arrow": "./services/aw.svg",
+    "link": "/services/digital-marketing",
+    "image": "./services/03.svg",
+    "description": "We offer comprehensive digital marketing and advertising strategies to boost your online presence and reach."
+  },
+  {
+    "id": 4,
+    "name1": "Web Development",
+    "name2": "& Technology",
+    "background": "h-[310px] p-12 bg-zinc-100 rounded-[45px] shadow-card border border-black justify-between items-center flex text-black",
+    "arrow": "./services/ag.svg",
+    "link": "/services/web-development",
+    "image": "./services/04.svg",
+    "description": "From websites to web applications, we create innovative and responsive web solutions tailored to your needs."
+  },
+  {
+    "id": 5,
+    "name1": "Content Creation",
+    "name2": "& Copywriting",
+    "background": "h-[310px] p-12 bg-lime rounded-[45px] shadow-card border border-black justify-between items-center flex text-black",
+    "arrow": "./services/ag.svg",
+    "link": "/services/content-creation",
+    "image": "./services/05.svg",
+    "description": "Our team creates high-quality content and copywriting that engages your audience and drives results."
+  },
+  {
+    "id": 6,
+    "name1": "Analytics &",
+    "name2": "Optimization",
+    "background": "h-[310px] p-12 bg-black rounded-[45px] shadow-card border border-black justify-between items-center flex text-white",
+    "arrow": "./services/aw.svg",
+    "link": "/services/analytics-optimization",
+    "image": "./services/06.svg",
+    "description": "We provide in-depth analytics and optimization services to help you refine your digital strategies for maximum impact."
+  }
 ]

@@ -3,43 +3,60 @@ import Container from "./Container.astro"
 ---
 <Container>
   <div class="relative flex flex-col-reverse items-center md:flex-row" id="hero">
+    <!-- Left Section: Text Content -->
     <div class="row items-center py-5 md:w-6/12 md:pb-20 md:pt-10">
       <div class="text-left space-y-3">
-        <h1 class="text-4xl font-medium leading-tight md:text-5xl text-center md:text-left">
-          Driving Growth with Innovative Digital Solutions
+        <!-- Title -->
+        <h1 class="text-4xl font-bold md:text-5xl text-center md:text-left text-gray-900">
+          <span class="text-custom-blue font-extrabold">Zhive</span>
+          <span class="text-custom-orange text-5xl font-extrabold inline-block">249</span> <!-- Styled "249" -->
+          <span class="block mt-2 text-lg md:text-2xl text-gray-600 font-medium">Fueling Your Growth with Smart Digital Strategies</span>
         </h1>
+        
+        <!-- Subtitle -->
         <p class="mt-6 mb-8 text-xl font-normal leading-7 sm:mb-12 text-center md:text-left">
-          At zhive249, we focus on three key aspects: creative design, effective marketing strategies, and cutting-edge web technology.
+          At zhive249, we combine innovative design, powerful marketing strategies, and the latest web technologies to craft unique, high-impact brands that captivate audiences and drive success in the digital world.
         </p>
+
+        <!-- Call-to-Action Button -->
         <div class="w-full justify-center md:justify-start items-center inline-flex">
-          <a href="https://github.com/manulthanura/Positivus" target="_blank" class="px-8 py-5 bg-custom-blue hover:bg-white rounded-2xl text-center text-white hover:text-black border text-xl font-normal leading-7">
+          <a href="#contact-form" target="_blank" class="lg:mt-8 px-8 py-5 bg-custom-blue hover:bg-white rounded-2xl text-center text-white hover:text-black border text-xl font-normal leading-7 transition-all duration-300">
             Book a consultation
           </a>
         </div>
       </div>
     </div>
+
+    <!-- Right Section: Image -->
     <div class="flex items-center py-5 md:w-6/12 md:pb-20 md:pt-10">
-      <img src="/Hero.svg" class="rounded-3xl " width="100%" alt="Hero"/>
+      <img src="/Hero.svg" class="rounded-3xl lg:p-5" width="100%" alt="Hero"/>
     </div>
   </div>
 
-  <div class="flex-row items-center">
-    <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6">
+  <!-- Client Logos Section -->
+  <div class="flex-row items-center mt-12">
+    <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-6">
+      <!-- Client Logo 1 -->
       <div class="p-4 grayscale transition duration-200 hover:grayscale-0">
         <img src="./clients/01.svg" class="h-12 w-auto mx-auto" loading="lazy" alt="client logo"/>
       </div>
+      <!-- Client Logo 2 -->
       <div class="p-4 grayscale transition duration-200 hover:grayscale-0">
         <img src="./clients/02.svg" class="h-12 w-auto mx-auto" loading="lazy" alt="client logo"/>
       </div>
+      <!-- Client Logo 3 -->
       <div class="p-4 flex grayscale transition duration-200 hover:grayscale-0">
         <img src="./clients/03.svg" class="h-9 w-auto m-auto" loading="lazy" alt="client logo"/>
       </div>
+      <!-- Client Logo 4 -->
       <div class="p-4 grayscale transition duration-200 hover:grayscale-0">
         <img src="./clients/04.svg" class="h-12 w-auto mx-auto" loading="lazy" alt="client logo"/>
       </div>
+      <!-- Client Logo 5 -->
       <div class="p-4 flex grayscale transition duration-200 hover:grayscale-0">
         <img src="./clients/05.svg" class="h-8 w-auto m-auto" loading="lazy" alt="client logo"/>
       </div>
+      <!-- Client Logo 6 -->
       <div class="p-4 grayscale transition duration-200 hover:grayscale-0">
         <img src="./clients/06.svg" class="h-12 w-auto mx-auto" loading="lazy" alt="client logo"/>
       </div>

@@ -1,60 +1,105 @@
 ---
-import Container from "./Container.astro"
+import Container from "./Container.astro";
 import Topic from "./Topic.astro";
 import servicesData from './Data/services.json';
 ---
+
 <Container>
-<div class="relative flex flex-col items-center md:flex-row" id="services">
-    <Topic title="Our Services" description="Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation">
-</div>
+  <!-- Section Title -->
+  <div class="relative flex flex-col items-center md:flex-row" id="services">
+    <Topic 
+      title="Our Services" 
+      description="Our digital marketing agency helps businesses grow and succeed online through a range of services, including SEO, PPC, social media marketing, and content creation."
+    />
+  </div>
 
-<div class="flex-row items-center py-5">
-    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
+  <!-- Services Cards -->
+  <div class="flex-row items-center py-5">
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6">
+      {servicesData.map(({ background, name1, name2, arrow, link, image, description }) => (
+        <div class={`${background} p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300`}>
+          <div class="flex flex-col justify-between h-full">
+            <!-- Service Titles -->
+            <div class="mb-4">
+              <div class="text-3xl font-medium text-gray-900">{name1}</div>
+              <div class="text-3xl font-medium text-gray-900">{name2}</div>
+            </div>
 
-        <!-- card start-->
-        {
-        servicesData.map(({ background, name1, name2, arrow, link, image} ) => (
-        <div class={background}>
-            <div class="flex-col justify-center items-start gap-[93px] inline-flex">
-                <div class="flex-col justify-start items-start flex">
-                    <div class="px-[7px] bg-lime-300 rounded-[7px] flex-col justify-start items-start gap-2.5 flex">
-                        <div class=" text-3xl font-medium">{name1}</div>
-                    </div>
-                    <div class="px-[7px] bg-lime-300 rounded-[7px] flex-col justify-start items-start gap-2.5 flex">
-                        <div class="text-3xl font-medium">{name2}</div>
-                    </div>
-                </div>
-                <a class="justify-start items-center gap-[15px] inline-flex" href={link}>
-                    <div class="w-[41px] h-[41px] relative">
-                        <img class="w-[41px] h-[41px] left-0 top-0 absolute" src={arrow} />
-                    </div>
-                    <div class="text-xl font-normal leading-7">Learn more</div>
-                </a>
+            <!-- Learn More Button -->
+            <div class="flex flex-col items-start">
+              <!-- Learn more link -->
+              <a 
+                href="javascript:void(0)" 
+                class="flex items-center gap-4 mt-auto text-custom-blue font-medium text-xl hover:text-custom-dark-blue transition"
+                data-target-id={`description-${name1}`}
+                data-text-id={`text-${name1}`}
+                data-more-text-id={`more-text-${name1}`}
+                id={`learn-more-${name1}`}
+                // @ts-ignore
+                client:load
+              >
+                <img class="w-10 h-10" src={arrow} alt="Arrow icon" id={`arrow-${name1}`} />
+                <span id={`more-text-${name1}`}>Read more</span>
+              </a>
+
+              <!-- Description, initially hidden -->
+              <p id={`description-${name1}`} class="text-lg text-gray-600 mt-4 description hidden">{description}</p>
+
+              <!-- Show less link, initially hidden -->
+              <a 
+                href="javascript:void(0)" 
+                id={`show-less-${name1}`}
+                class="text-custom-blue font-medium text-lg hidden mt-2 hover:text-custom-dark-blue transition"
+                // @ts-ignore
+                client:load
+              >
+                Show less
+              </a>
             </div>
-            <div class="w-[210px] h-[170px] pt-0.5 pb-[1.95px] justify-center items-center flex">
-                <img class="hidden md:block" src={image} />
-            </div>
+          </div>
+
+          <!-- Service Image -->
+          <div class="mt-6">
+            <img 
+              src={image} 
+              alt={`${name1} and ${name2} Service Illustration`} 
+              class="hidden md:block w-[210px] h-[170px] mx-auto"
+            />
+          </div>
         </div>
-        ))
-        }
-        <!-- card end-->
+      ))}
     </div>
-</div>
+  </div>
 
-<div class="flex-row items-center my-6 p-14 bg-zinc-100 rounded-[45px]">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="justify-start items-center gap-[275px] flex">
-            <div class="flex-col justify-start items-start gap-[26px] inline-flex text-black">
-                <div class="text-3xl font-medium">Let’s make things happen</div>
-                <div class="text-lg font-normal">Contact us today to learn more about how our digital marketing services can help your business grow and succeed online.</div>
-                <a href="/" class="px-[35px] py-5 bg-zinc-900 hover:bg-white text-white hover:text-black border rounded-[14px] justify-start items-start gap-2.5 inline-flex">
-                    <div class="text-center text-xl font-normal leading-7">Get your free proposal</div>
-                </a>
-            </div>
-        </div>
-        <div class="hidden md:grid justify-items-center -m-20">
-            <img src="/services/Illustration.svg" width="50%" alt="cat"/>
-        </div>
+  <!-- Call to Action -->
+  <div class="flex-row items-center my-12 p-14 bg-zinc-100 rounded-3xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Text Section -->
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-black">
+          Let’s make things happen
+        </h2>
+        <p class="text-lg text-gray-700">
+          Contact us today to learn more about how our digital marketing services can help your business grow and succeed online.
+        </p>
+        <a 
+          href="/" 
+          class="px-8 py-4 bg-zinc-900 hover:bg-white text-white hover:text-black border border-black rounded-xl inline-block transition duration-300"
+        >
+          Get your free proposal
+        </a>
+      </div>
+
+      <!-- Illustration -->
+      <div class="hidden md:block">
+        <img 
+          src="/services/Illustration.svg" 
+          alt="Illustration of digital collaboration" 
+          class="w-2/3 mx-auto"
+        />
+      </div>
     </div>
-</div>
+  </div>
 </Container>
+<!-- TODO: the read more is not working any more -->
+<!-- TODO: strongly type use the same strucure as social component -->

@@ -1,0 +1,21 @@
+---
+// Import the JSON file containing the social platform data
+import socialData from './Data/social.json'; 
+
+// Define the platform type to be one of the keys in socialData
+type Platform = 'facebook' | 'linkedin' | 'instagram' | 'tiktok';
+
+// Destructure the 'platform' prop passed to this component
+const { platform } = Astro.props as { platform: Platform };
+
+// Get the icon and URL for the provided platform, or default to empty if not found
+const { icon, url } = socialData[platform] || {};
+---
+
+<a href={url || '#'} target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-300">
+  <!-- Display the platform's icon -->
+  <img src={icon || '/icons/default-icon.svg'} alt={`${platform} icon`} class="w-6 h-6" />
+  
+  <!-- Display the username, only visible on larger screens -->
+  <span class="hidden md:inline">zhive249</span>
+</a>
