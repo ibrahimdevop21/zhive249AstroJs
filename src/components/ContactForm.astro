@@ -1,7 +1,12 @@
 ---
 ---
 
-<form id="contact-form" class="space-y-6">
+<form
+  action="https://formspree.io/f/YOUR_FORM_ID"
+  method="POST"
+  class="space-y-6"
+  id="contact-form"
+>
   <div>
     <label for="name" class="block text-sm font-medium text-gray-200">Name</label>
     <input
@@ -51,49 +56,17 @@
 </form>
 
 <script>
-  const form = document.getElementById('contact-form') as HTMLFormElement;
-  const formStatus = document.getElementById('form-status') as HTMLDivElement;
-  const successMessage = document.getElementById('success-message') as HTMLParagraphElement;
-  const errorMessage = document.getElementById('error-message') as HTMLParagraphElement;
+  const form = document.getElementById('contact-form');
+  const formStatus = document.getElementById('form-status');
+  const successMessage = document.getElementById('success-message');
+  const errorMessage = document.getElementById('error-message');
 
   if (form) {
     form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const formData = new FormData(form);
-      const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('message'),
-      };
-
-      try {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
-
-        formStatus.classList.remove('hidden');
-        
-        if (response.ok) {
-          // Show success message
-          successMessage.classList.remove('hidden');
-          errorMessage.classList.add('hidden');
-          form.reset();
-        } else {
-          // Show error message
-          successMessage.classList.add('hidden');
-          errorMessage.classList.remove('hidden');
-        }
-      } catch (error) {
-        // Show error message
-        formStatus.classList.remove('hidden');
-        successMessage.classList.add('hidden');
-        errorMessage.classList.remove('hidden');
-      }
+      // Let Formspree handle the submission
+      formStatus.classList.remove('hidden');
+      successMessage.classList.remove('hidden');
+      errorMessage.classList.add('hidden');
     });
   }
 </script>

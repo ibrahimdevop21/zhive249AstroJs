@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import vercel from "@astrojs/vercel/serverless";
 import compress from "astro-compress";
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
@@ -25,17 +24,7 @@ export default defineConfig({
     sitemap(),
     robotsTxt()
   ],
-  output: 'server',
-  adapter: vercel({
-    analytics: true,
-    webAnalytics: true,
-    speedInsights: true,
-    imageService: true,
-    functionPerRoute: false,
-    serverless: {
-      runtime: 'nodejs20.x'
-    }
-  }),
+  output: 'static',
   markdown: {
     shikiConfig: {
       theme: 'github-dark',
@@ -64,9 +53,5 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ['node:*'],
     },
-  },
-  server: {
-    host: '0.0.0.0',
-    port: 3000,
   },
 });
