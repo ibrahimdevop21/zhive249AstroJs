@@ -26,7 +26,16 @@ export default defineConfig({
     robotsTxt()
   ],
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    analytics: true,
+    webAnalytics: true,
+    speedInsights: true,
+    imageService: true,
+    functionPerRoute: false,
+    serverless: {
+      runtime: 'nodejs20.x'
+    }
+  }),
   markdown: {
     shikiConfig: {
       theme: 'github-dark',
