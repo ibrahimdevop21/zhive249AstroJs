@@ -12,10 +12,17 @@ const { platform } = Astro.props as { platform: Platform };
 const { icon, url } = socialData[platform] || {};
 ---
 
-<a href={url || '#'} target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-300">
-  <!-- Display the platform's icon -->
-  <img src={icon || '/icons/default-icon.svg'} alt={`${platform} icon`} class="w-6 h-6" />
-  
-  <!-- Display the username, only visible on larger screens -->
-  <span class="hidden md:inline">zhive249</span>
+<a 
+  href={url || '#'} 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-lime transition-colors duration-300 group"
+  aria-label={`Follow us on ${platform}`}
+>
+  <img 
+    src={icon || '/icons/default-icon.svg'} 
+    alt="" 
+    class="w-5 h-5 text-gray-400 group-hover:text-white transition-colors duration-300"
+    aria-hidden="true"
+  />
 </a>

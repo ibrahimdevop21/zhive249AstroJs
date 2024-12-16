@@ -12,8 +12,56 @@
 			"handle": "filesystem"
 		},
 		{
+			"src": "^\\/_image\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/404\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/articles\\/api\\/search\\.json\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/articles\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/articles(?:\\/(.*?))?\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/services\\/analytics-optimization\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/services\\/content-creation\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/services\\/creative-branding\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/services\\/digital-marketing\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/services\\/market-research\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/services\\/web-development\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/$",
+			"dest": "_render"
+		},
+		{
 			"src": "/.*",
-			"dest": "/404.html",
+			"dest": "_render",
 			"status": 404
 		}
 	]

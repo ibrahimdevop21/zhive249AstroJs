@@ -1,54 +1,114 @@
-# Positivus - Digital Marketing Agency Landing Page
+# Zhive249 - Modern Digital Agency Website
 
-Introducing "Positivus" - a stunning and versatile Astro theme designed for digital marketing agencies.
+A modern, fast, and accessible website for Zhive249 digital agency, built with Astro and TailwindCSS.
 
-Built with clean, modern aesthetics and leveraging the power of Astro and Tailwind, Positivus empowers you to craft a captivating website that showcases your agency's expertise and fosters trust with potential clients.
+[![Built with Astro](https://astro.badgen.net/badge/built%20with/Astro/purple)](https://astro.build)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=flat&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6.svg?style=flat&logo=TypeScript&logoColor=white)](https://www.typescriptlang.org)
 
-[![Static Badge](https://img.shields.io/badge/UI%2FUX-Olga-blue)](https://www.figma.com/@olgaaverchenko) [![View Demo](https://img.shields.io/badge/Develop-Manul_Thanura-red)](https://lk.linkedin.com/in/manulthanura)
-[![Static Badge](https://img.shields.io/badge/View_Demo-green)](https://positivustheme.vercel.app)
-[![Static Badge](https://img.shields.io/badge/Astro-orange)](https://astro.build/)
+## ✨ Features
 
-![Cover](./public/cover.png)
+- ⚡️ **Lightning Fast**: Built with Astro for optimal performance
+- 🎨 **Beautiful Design**: Modern UI with smooth animations and transitions
+- 📱 **Fully Responsive**: Looks great on all devices
+- ♿️ **Accessible**: WCAG 2.1 compliant with proper ARIA labels
+- 🔍 **SEO Optimized**: Meta tags, Open Graph, and Schema.org
+- 🌙 **Dark Mode**: Automatic and manual dark mode support
+- 📝 **Blog/Articles**: Dynamic blog with pagination and categories
+- 🔒 **Type Safe**: Built with TypeScript for better reliability
 
-## Theme Features
+## 🚀 Tech Stack
 
-Leveraging the power of Astro and Tailwind CSS, Positivus offers:
+- [Astro](https://astro.build) - The web framework for content-driven websites
+- [TailwindCSS](https://tailwindcss.com) - A utility-first CSS framework
+- [TypeScript](https://www.typescriptlang.org) - JavaScript with syntax for types
+- [Node.js](https://nodejs.org) - JavaScript runtime
 
-- Clean and modern design.
-- SEO-friendly.
-- Multiple Layouts.
-- Seamless Navigation.
-- Pre-built Sections.
-- Customizable Components.
-- Mobile-Responsiveness.
+## 📦 Project Structure
 
-## 🚀 Project Structure
+```
+/
+├── public/
+│   ├── fonts/
+│   ├── images/
+│   └── favicon.svg
+├── src/
+│   ├── components/
+│   ├── content/
+│   ├── layouts/
+│   ├── pages/
+│   ├── styles/
+│   └── utils/
+└── package.json
+```
 
-The project is built using Astro.js and Tailwind CSS. Here's a quick look at the project structure:
+## 🛠️ Development
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/zhive249.git
+   cd zhive249
+   ```
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-Any static assets, like images, can be placed in the `public/` directory.
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-## 🧞 Commands
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
 
-All commands are run from the root of the project, from a terminal:
+## 📝 Commands
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Command           | Action                                       |
+|:-----------------|:---------------------------------------------|
+| `npm install`     | Install dependencies                         |
+| `npm run dev`     | Start dev server at `localhost:4321`         |
+| `npm run build`   | Build for production to `./dist/`           |
+| `npm run preview` | Preview production build                     |
 
-## 👀 Want to learn more?
+## 🎯 Performance Optimizations
 
-Feel free to check [Astro documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Image optimization with automatic WebP conversion
+- Font preloading and subsetting
+- CSS and JavaScript minification
+- Efficient chunk splitting
+- Lazy loading of off-screen content
+
+## 🔒 Security
+
+- Content Security Policy (CSP) headers
+- Secure cookie configuration
+- XSS protection
+- CSRF protection
+- Rate limiting
+
+## 📱 Responsive Design
+
+- Mobile-first approach
+- Fluid typography
+- Responsive images
+- Touch-friendly navigation
+- Optimized for various screen sizes
+
+## 🌐 Browser Support
+
+- Chrome (last 2 versions)
+- Firefox (last 2 versions)
+- Safari (last 2 versions)
+- Edge (last 2 versions)
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.

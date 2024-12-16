@@ -1,0 +1,250 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/Container.astro';
+import TeamGrid from '../components/TeamGrid.astro';
+
+const stats = [
+  { value: '50+', label: 'Years Combined Experience', icon: '🏆' },
+  { value: '100+', label: 'Projects Completed', icon: '🎯' },
+  { value: '50+', label: 'Happy Clients', icon: '😊' }
+];
+
+const teamMembers = [
+  {
+    name: 'Ibrahim',
+    role: 'Technical Director',
+    bio: 'The wizard behind the code who turned coffee into successful businesses! With a track record in export/import, wholesale, and web development, Ibrahim can build anything from international trade routes to stunning websites. When not crafting elegant code, he\'s probably dreaming up the next big e-commerce revolution or debugging with a smile. 🚀☕',
+    image: '/team/ibrahim.jpeg',
+    social: {
+      linkedin: 'https://linkedin.com/in/ibrahimdevop21',
+      github: 'https://github.com/ibrahimdevop21',
+      email: 'ibrahim.mohamed@zhive249.com'
+    }
+  },
+  {
+    name: 'Yousef (Joe)',
+    role: 'Sales Director',
+    bio: 'Known to everyone as Joe, he\'s our master of making connections and closing deals! With his charismatic approach and deep understanding of client needs, Joe can sell ice to penguins - but he\'d rather help businesses achieve their digital dreams. 🤝✨',
+    image: '/team/joe.jpeg',
+    social: {
+      linkedin: 'https://www.linkedin.com/in/yousif-el-hosiny/',
+      email: 'yousif.elhosiny@zhive249.com'
+    }
+  },
+  {
+    name: 'Ahmed',
+    role: 'Flutter Developer & Jack of All Trades',
+    bio: 'Meet our resident joker and problem-solving wizard! 🃏 Whether you need a slick Flutter app, market insights, or content magic, Ahmed\'s your go-to guy. He\'s like our Swiss Army knife - equipped with coding skills, creative thinking, and a dash of humor to make every challenge fun. Need help? Just look for the guy with all the answers and the contagious laugh! 💡✨',
+    image: '/team/ahmed.jpeg',
+    social: {
+      email: 'ahmed.ibrahim@zhive249.com',
+      github: 'https://github.com/shegzibar',
+      linkedin: 'https://www.linkedin.com/in/ahmed-esa-46488a172/'
+    }
+  },
+  {
+    name: 'Shahd',
+    role: 'Public Relations Director',
+    bio: 'Our ray of sunshine and master of connections! With her infectious energy and quick wit, Shahd keeps our office buzzing with laughter. But watch out when the glasses come off - that\'s when you know she means business! 😊 When not brightening everyone\'s day, she\'s crafting the perfect PR strategies. ✨',
+    image: '/team/shahd.jpeg',
+    social: {
+      email: 'shahd.minalla@zhive249.com',
+      instagram: 'https://www.instagram.com/shahdminalla'
+    }
+  },
+  {
+    name: 'Waad Khalid',
+    role: 'Administrative Commander & Project Manager',
+    bio: 'Meet our deadline ninja with the sweetest smile! 🌟 Waad keeps our projects running like clockwork with her perfect blend of charm and efficiency. She\'ll kindly remind you about your tasks... until you miss a deadline - then watch out for that same smile, because it means business! 📊 The secret to staying on her good side? Simple: just get your work done on time! ⏰✨',
+    image: '/team/waad-kh.jpeg',
+    social: {
+      email: 'waad.minalla@zhive249.com',
+      linkedin: 'https://www.linkedin.com/in/waad-khalid-21495a242/'
+    }
+  },
+  {
+    name: 'Waad',
+    role: 'Finance & HR Manager',
+    bio: 'Need a new laptop or tool? Waad\'s your financial fairy godmother! 💫 As our master of budgets and keeper of resources, she makes sure everyone has what they need to shine. Just make sure to justify that fancy new gadget - she\'s got a keen eye for both numbers and talent! 💼 When she\'s not managing finances, she\'s taking care of our team as our HR extraordinaire. 🌟',
+    image: '/team/waad.jpeg',
+    social: {
+      email: 'waad.ibrahim@zhive249.com'
+    }
+  },
+  {
+    name: 'Shams',
+    role: 'Senior Designer & UI/UX Director',
+    bio: 'Our creative mastermind who turns pixels into pure magic! ✨ With an eye for detail and a passion for user-centered design, Shams crafts digital experiences that not only look stunning but feel intuitive and delightful. From wireframes to polished interfaces, she\'s the artist behind our visual storytelling. 🎨 When she\'s not pushing pixels to perfection, she\'s dreaming up new ways to make our users smile! 🌟',
+    image: '/team/shams.jpeg',
+    social: {}
+  }
+];
+
+const values = [
+  {
+    icon: '⚡',
+    title: 'Efficiency',
+    description: 'Delivering exceptional results through streamlined strategies and innovative solutions. We optimize processes and leverage cutting-edge technology to ensure maximum impact with minimal resources.'
+  },
+  {
+    icon: '🏛️',
+    title: 'Strength and Stability',
+    description: 'Building enduring foundations and trusted partnerships, we ensure reliability and long-term success in every project we undertake. Our commitment to stability drives sustainable growth.'
+  },
+  {
+    icon: '🤝',
+    title: 'Harmony and Unity',
+    description: 'Creating synergy among teams, brands, and audiences to deliver cohesive, impactful campaigns.'
+  },
+  {
+    icon: '🎨',
+    title: 'Modern Design Appeal',
+    description: 'Combining contemporary trends with timeless aesthetics to captivate and inspire.'
+  },
+  {
+    icon: '🔄',
+    title: 'Adaptability',
+    description: 'Staying ahead of industry trends, quickly adjusting to market demands, and providing tailored solutions for diverse needs.'
+  },
+  {
+    icon: '💡',
+    title: 'Innovation',
+    description: 'Continuously exploring new ideas and technologies to push boundaries and redefine marketing excellence.'
+  }
+];
+
+---
+
+<Layout title="About Us | Zhive249">
+  <main class="pt-20">
+    <!-- Hero Section with Animated Gradient -->
+    <section class="relative py-32 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 via-navy-800 to-navy-900 animate-gradient"></div>
+      <div class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+      <Container>
+        <div class="relative">
+          <div class="mx-auto max-w-3xl text-center">
+            <h1 class="text-4xl font-bold tracking-tight sm:text-6xl bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent mb-8">
+              Our Story
+            </h1>
+            <p class="text-lg leading-8 text-navy-200 mb-8">
+              Born from a shared vision of excellence, Zhive249 brings together talented freelancers from across the Arab world. We are developers, designers, marketers, and strategists who discovered that our combined expertise creates something truly extraordinary.
+            </p>
+            <p class="text-lg leading-8 text-navy-200 mb-8">
+              For the past year, we've been working together as a unified team, bringing over 50 years of combined real-world experience from major Arab markets including Saudi Arabia, UAE, Jordan, Sudan, and Egypt. This diverse regional expertise gives us unique insights into local markets while maintaining global standards.
+            </p>
+            <p class="text-lg leading-8 text-navy-200 mb-12">
+              What started as individual journeys has evolved into a powerful collective. We united with a singular mission: to harness our diverse talents, cultural insights, and technical expertise to deliver outstanding digital solutions that transcend borders.
+            </p>
+            <div class="flex justify-center">
+              <a href="/contact" class="rounded-lg bg-primary-500 px-8 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 transition-all duration-300">
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-navy-900 to-navy-800"></div>
+      <Container>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {stats.map((stat) => (
+            <div class="text-center">
+              <div class="relative h-full">
+                <div class="absolute -inset-2 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg blur opacity-25"></div>
+                <div class="relative bg-navy-800/50 backdrop-blur-sm rounded-lg p-8 h-full hover:bg-navy-700/50 transition-all duration-300 flex flex-col items-center justify-center">
+                  <dt class="text-5xl mb-4">{stat.icon}</dt>
+                  <dd class="text-4xl font-bold tracking-tight text-primary-400 mb-2">{stat.value}</dd>
+                  <dt class="text-base text-navy-200">{stat.label}</dt>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+
+    <!-- Values Section with Hover Effects -->
+    <section class="py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-navy-900 to-navy-800"></div>
+      <Container>
+        <div class="text-center max-w-3xl mx-auto mb-16 relative">
+          <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-primary-500 to-primary-400 bg-clip-text text-transparent">Our Values</h2>
+          <p class="text-lg text-navy-200">
+            These core values drive our mission and shape how we deliver exceptional results for our clients.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+          {values.map((value) => (
+            <div class="group relative h-full">
+              <div class="absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
+              <div class="relative h-full p-8 bg-navy-800/90 backdrop-blur-sm rounded-lg hover:bg-navy-700/90 transition-all duration-300 flex flex-col">
+                <div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{value.icon}</div>
+                <h3 class="text-xl font-bold mb-3 text-white group-hover:text-primary-400 transition-colors">{value.title}</h3>
+                <p class="text-navy-200 leading-relaxed flex-grow">{value.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+
+    <!-- Team Section with Enhanced Cards -->
+    <section class="py-24 bg-navy-800 relative overflow-hidden">
+      <div class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+      <Container>
+        <div class="mx-auto max-w-2xl text-center">
+          <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Meet Our Team</h2>
+          <p class="mt-4 text-lg text-navy-300">
+            Our diverse team of experts brings together years of experience and a passion for digital innovation.
+          </p>
+        </div>
+        <TeamGrid members={teamMembers} />
+      </Container>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-500/20 via-navy-800 to-navy-900"></div>
+      <Container>
+        <div class="relative max-w-3xl mx-auto text-center">
+          <h2 class="text-4xl font-bold mb-6 text-white">Ready to Work Together?</h2>
+          <p class="text-lg text-navy-200 mb-8">
+            Let's discuss how we can help your business grow in the digital landscape.
+          </p>
+          <a
+            href="/contact"
+            class="inline-flex items-center px-8 py-4 rounded-lg bg-primary-500 text-white font-semibold hover:bg-primary-600 transition-colors duration-300"
+          >
+            Get in Touch
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </Container>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+  }
+</style>

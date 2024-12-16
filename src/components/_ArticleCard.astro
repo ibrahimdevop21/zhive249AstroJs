@@ -1,0 +1,85 @@
+---
+import { formatDate } from "../utils";
+import type { CollectionEntry } from "astro:content";
+import ArticleIcon from "./Icons/ArticleIcon.astro";
+import VideoIcon from "./Icons/VideoIcon.astro";
+
+interface Props {
+  article: CollectionEntry<'blog'>;
+}
+
+const { article } = Astro.props;
+const { data, slug } = article;
+
+// Validate required fields
+if (!data.title || !data.type || !data.pubDate) {
+  throw new Error('Required article fields are missing');
+}
+---
+
+<article 
+  class="p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-50 transition-colors duration-200"
+  aria-labelledby={`article-${slug}-title`}
+>
+  <div class="flex justify-between items-center mb-5 text-gray-500">
+    <span 
+      class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded"
+      role="status"
+      aria-label={`Content type: ${data.type}`}
+    >
+      {data.type === 'Article' ? <ArticleIcon /> : <VideoIcon />}
+      <span class="ml-1">{data.type}</span>
+    </span>
+    <time datetime={data.pubDate.toISOString()} class="text-sm">
+      {formatDate(data.pubDate)}
+    </time>
+  </div>
+
+  {data.image && (
+    <div class="mb-5 overflow-hidden rounded-lg">
+      <img
+        src={data.image}
+        alt=""
+        class="w-full h-48 object-cover"
+        loading="lazy"
+      />
+    </div>
+  )}
+
+  <h2 
+    id={`article-${slug}-title`}
+    class="mb-2 text-2xl font-bold tracking-tight text-gray-900 hover:text-primary-600"
+  >
+    <a href={`/blog/${slug}`}>
+      {data.title}
+    </a>
+  </h2>
+
+  <p class="mb-5 font-light text-gray-500">
+    {data.summary}
+  </p>
+
+  <div class="flex items-center space-x-4">
+    <img
+      class="w-7 h-7 rounded-full"
+      src={data.authImage}
+      alt={`${data.author}'s profile picture`}
+      loading="lazy"
+    />
+    <span class="font-medium text-gray-900">
+      {data.author}
+    </span>
+  </div>
+</article>
+
+<script>
+  // Error boundary for image loading
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    img.addEventListener('error', (e) => {
+      const imgElement = e.target as HTMLImageElement;
+      imgElement.src = '/default-avatar.jpg';
+      imgElement.alt = 'Default avatar';
+    });
+  });
+</script>

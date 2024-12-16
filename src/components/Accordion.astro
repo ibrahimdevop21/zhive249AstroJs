@@ -10,7 +10,7 @@ const { index, title, description } = Astro.props;
 
 <div
   id="accordion__item"
-  class="accordion__item group h-[160px] bg-zinc-100 overflow-hidden w-full transition-all duration-500 mb-[30px] rounded-[45px] border border-dark shadow-[0px_5px_0px_#191a23]"
+  class="accordion__item group h-[160px] bg-dark-400/30 overflow-hidden w-full transition-all duration-500 mb-[30px] rounded-[45px] border border-primary-500/10 shadow-[0px_5px_0px_rgba(34,197,94,0.1)] text-white"
 >
   <button
     class="accordion__toggle w-full h-[160px] flex items-center justify-between p-[60px] cursor-pointer"
@@ -19,11 +19,11 @@ const { index, title, description } = Astro.props;
     aria-controls={`${title} accordion__item menu content`}
   >
     <div class="flex items-center gap-[25px]">
-      <span class="hidden sm:block sm:text-6xl">0{index}</span>
-      {title}
+      <span class="hidden sm:block sm:text-6xl text-primary-500/50">0{index}</span>
+      <span class="text-xl font-medium">{title}</span>
     </div>
     <div
-      class="bg-white w-[58px] h-[58px] flex justify-center items-center rounded-full border border-dark"
+      class="bg-dark-500/50 w-[58px] h-[58px] flex justify-center items-center rounded-full border border-primary-500/20 group-hover:bg-primary-500/10 transition-colors duration-300"
     >
       <div
         class="accordion__icon h-10 w-10 transition-transform duration-300 flex justify-center items-center relative"
@@ -37,102 +37,70 @@ const { index, title, description } = Astro.props;
     aria-labelledby={`${title} accordion__item menu button `}
     class="accordion__content px-[60px]"
   >
-    <div class="w-full h-[2px] bg-black"></div>
-    <p class="prose mb-4 mt-1 max-w-full pt-5 pb-[60px] transition-[height]">
+    <div class="w-full h-[2px] bg-primary-500/20"></div>
+    <p class="prose text-dark-300 mb-4 mt-1 max-w-full pt-5 pb-[60px] transition-[height]">
       {description}
     </p>
   </div>
 </div>
+
 <script>
   function accordionSetup() {
     const accordionItems = document.querySelectorAll(
       ".accordion__item"
     ) as NodeListOf<HTMLElement>;
 
-    accordionItems.forEach((accordionItem) => {
-      const accordionToggle = accordionItem.querySelector(".accordion__toggle");
-      const accordionIcon = accordionItem.querySelector(".accordion__icon");
+    accordionItems.forEach((item) => {
+      const toggle = item.querySelector(".accordion__toggle") as HTMLElement;
+      const icon = item.querySelector(".accordion__icon") as HTMLElement;
+      const content = item.querySelector(".accordion__content") as HTMLElement;
 
-      if (accordionToggle && accordionIcon) {
-        accordionToggle.addEventListener("click", (e) => {
-          e.stopPropagation(); // prevent the event from bubbling up to the document
+      if (!toggle || !icon || !content) return;
 
-          // Close other accordion items
-          accordionItems.forEach((otherAccordionItem) => {
-            if (
-              otherAccordionItem !== accordionItem &&
-              otherAccordionItem.classList.contains("active")
-            ) {
-              const otherAccordionToggle =
-                otherAccordionItem.querySelector(".accordion__toggle");
-              const otherAccordionIcon =
-                otherAccordionItem.querySelector(".accordion__icon");
-
-              if (otherAccordionToggle && otherAccordionIcon) {
-                otherAccordionItem.classList.remove("active");
-                otherAccordionItem.classList.remove("bg-lime");
-                otherAccordionToggle.setAttribute("aria-expanded", "false");
-                otherAccordionItem.style.height = "160px";
-                otherAccordionIcon.classList.remove("rotate-180");
-                otherAccordionIcon.classList.remove("collapsed");
-              }
+      toggle.addEventListener("click", () => {
+        const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+        
+        // Reset all items
+        accordionItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            const otherToggle = otherItem.querySelector(".accordion__toggle");
+            const otherIcon = otherItem.querySelector(".accordion__icon") as HTMLElement;
+            otherItem.style.height = "160px";
+            otherToggle?.setAttribute("aria-expanded", "false");
+            if (otherIcon) {
+              otherIcon.style.transform = "rotate(0deg)";
             }
-          });
-
-          // Close itself if it's open, otherwise open it
-          if (!accordionItem.classList.contains("active")) {
-            accordionItem.classList.add("active");
-            accordionToggle.setAttribute("aria-expanded", "true");
-
-            // Set height according to content
-            accordionItem.style.height = accordionItem.scrollHeight + "px";
-            accordionItem.classList.add("bg-lime");
-            accordionIcon.classList.add("rotate-180");
-            accordionIcon.classList.add("collapsed");
-          } else {
-            accordionItem.classList.remove("active");
-            accordionToggle.setAttribute("aria-expanded", "false");
-
-            // Reset height. Accordion Items have Overflow hidden so when it's
-            // height is 60, because the toggle's height is 60, the content is hidden
-            accordionItem.style.height = "160px";
-            accordionIcon.classList.remove("rotate-180");
-            accordionItem.classList.remove("bg-lime");
-            accordionIcon.classList.remove("collapsed");
           }
-
-          e.preventDefault();
-          return false;
         });
-      }
-    });
 
-    // Close the accordion when clicking outside of it
-    document.addEventListener("click", (event) => {
-      accordionItems.forEach((accordionItem) => {
-        const accordionToggle =
-          accordionItem.querySelector(".accordion__toggle");
-        const accordionIcon = accordionItem.querySelector(".accordion__icon");
-
-        if (
-          accordionToggle &&
-          accordionIcon &&
-          !accordionItem.contains(event.target as Node)
-        ) {
-          accordionItem.classList.remove("active");
-          accordionItem.classList.remove("bg-lime");
-          accordionToggle.setAttribute("aria-expanded", "false");
-
-          // Reset height. Overflow gets hidden
-          accordionItem.style.height = "160px";
-          accordionIcon.classList.remove("rotate-180");
-          accordionIcon.classList.remove("collapsed");
+        // Toggle current item
+        if (isExpanded) {
+          item.style.height = "160px";
+          toggle.setAttribute("aria-expanded", "false");
+          icon.style.transform = "rotate(0deg)";
+        } else {
+          const contentHeight = content.scrollHeight;
+          item.style.height = `${contentHeight + 160}px`;
+          toggle.setAttribute("aria-expanded", "true");
+          icon.style.transform = "rotate(45deg)";
         }
       });
+
+      // Create and style the plus icon
+      const horizontalLine = document.createElement("div");
+      horizontalLine.className = "absolute w-6 h-0.5 bg-primary-500 group-hover:bg-primary-400 transition-colors duration-300";
+      
+      const verticalLine = document.createElement("div");
+      verticalLine.className = "absolute w-0.5 h-6 bg-primary-500 group-hover:bg-primary-400 transition-colors duration-300";
+      
+      icon.appendChild(horizontalLine);
+      icon.appendChild(verticalLine);
     });
   }
 
-  // Run on page swap
+  // Run setup on initial load
   accordionSetup();
-  document.addEventListener("astro:after-swap", accordionSetup);
+
+  // Run setup when Astro swaps pages
+  document.addEventListener("astro:page-load", accordionSetup);
 </script>

@@ -1,0 +1,143 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const frontmatter = {
+  title: "Market Research",
+  subtitle: "& Strategy",
+  description: "Data-driven market research and strategic planning to help you understand your market, competitors, and customers better.",
+  image: "/services/03.svg"
+};
+---
+
+<ServiceLayout frontmatter={frontmatter}>
+  <h2 class="text-gradient">Transform Your Market Understanding</h2>
+  <p class="text-dark-300">At Zhive249, we help businesses make informed decisions through comprehensive market research and strategic analysis. Our data-driven approach ensures you understand your market, competitors, and customers to drive sustainable growth.</p>
+
+  <h3 class="text-gradient">Our Market Research Services Include:</h3>
+  <ul class="feature-list">
+    <li class="feature-item">
+      <span class="feature-icon">📊</span>
+      <span class="feature-text">Market Analysis & Trends</span>
+    </li>
+    <li class="feature-item">
+      <span class="feature-icon">🎯</span>
+      <span class="feature-text">Competitor Research</span>
+    </li>
+    <li class="feature-item">
+      <span class="feature-icon">👥</span>
+      <span class="feature-text">Consumer Behavior Studies</span>
+    </li>
+    <li class="feature-item">
+      <span class="feature-icon">📈</span>
+      <span class="feature-text">Data Analytics</span>
+    </li>
+    <li class="feature-item">
+      <span class="feature-icon">🎨</span>
+      <span class="feature-text">Brand Positioning</span>
+    </li>
+    <li class="feature-item">
+      <span class="feature-icon">📋</span>
+      <span class="feature-text">Strategic Planning</span>
+    </li>
+  </ul>
+
+  <h3 class="text-gradient">Our Research Process</h3>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <h4 class="text-white">Data Collection</h4>
+      <p class="text-navy-300 dark:text-navy-300 mt-2">We gather comprehensive data through various research methods and reliable sources.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <h4 class="text-white">Analysis</h4>
+      <p class="text-navy-300 dark:text-navy-300 mt-2">Our experts analyze the data to identify patterns, trends, and opportunities.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <h4 class="text-white">Strategy</h4>
+      <p class="text-navy-300 dark:text-navy-300 mt-2">We develop actionable strategies based on research insights and business objectives.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">4</div>
+      <h4 class="text-white">Implementation</h4>
+      <p class="text-navy-300 dark:text-navy-300 mt-2">We help you implement the strategies and monitor results for continuous improvement.</p>
+    </div>
+  </div>
+
+  <h3 class="text-gradient">Why Market Research Matters</h3>
+  <div class="benefits-grid">
+    {[
+      'Make data-driven business decisions',
+      'Identify market opportunities and threats',
+      'Understand customer needs and preferences',
+      'Stay ahead of market trends',
+      'Optimize marketing strategies'
+    ].map((benefit) => (
+      <div class="benefit-item">
+        <svg class="w-6 h-6 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <span class="text-navy-300 dark:text-navy-300">{benefit}</span>
+      </div>
+    ))}
+  </div>
+</ServiceLayout>
+
+<style>
+  .text-gradient {
+    background: linear-gradient(to right, #22c55e, #16a34a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .feature-list {
+    @apply grid gap-6 md:grid-cols-2 mt-8;
+  }
+
+  .feature-item {
+    @apply flex items-center space-x-4 p-4 bg-navy-400/30 dark:bg-navy-600/30 rounded-xl transition-transform duration-300 hover:transform hover:scale-105;
+  }
+
+  .feature-icon {
+    @apply text-2xl;
+  }
+
+  .feature-text {
+    @apply text-navy-300 dark:text-navy-300;
+  }
+
+  .process-steps {
+    @apply grid gap-8 md:grid-cols-2 mt-8;
+  }
+
+  .process-step {
+    @apply relative p-6 bg-navy-400/30 dark:bg-navy-600/30 rounded-xl border border-primary-500/10;
+  }
+
+  .step-number {
+    @apply absolute -top-4 -left-4 w-8 h-8 bg-primary-500 text-white rounded-full flex items-center justify-center font-bold;
+  }
+
+  .benefits-grid {
+    @apply grid gap-4 mt-8;
+  }
+
+  .benefit-item {
+    @apply flex items-center space-x-4 p-4 bg-navy-400/30 dark:bg-navy-600/30 rounded-xl transition-all duration-300 hover:bg-navy-400/50;
+  }
+
+  .feature-description {
+    @apply text-navy-300 dark:text-navy-300;
+  }
+
+  .process-description {
+    @apply text-navy-300 dark:text-navy-300 mt-2;
+  }
+
+  .benefit-description {
+    @apply text-navy-300 dark:text-navy-300;
+  }
+</style>

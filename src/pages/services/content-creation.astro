@@ -1,0 +1,143 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const frontmatter = {
+  title: "Content Creation",
+  subtitle: "& Copywriting",
+  description: "Engaging content that connects with your audience and drives conversions across all your digital platforms.",
+  image: "/services/05.svg"
+};
+---
+
+<ServiceLayout frontmatter={frontmatter}>
+  <h2 class="text-gradient">Transform Your Content Strategy</h2>
+  <p class="text-dark-300">At Zhive249, we create compelling content that tells your brand's story, engages your audience, and drives meaningful results. Our expert content creators and copywriters craft messages that resonate and convert.</p>
+
+  <h3 class="text-gradient">Our Content Services Include:</h3>
+  <ul class="feature-list">
+    <li class="feature-item">
+      <span class="feature-icon">📝</span>
+      <span class="feature-text">Website Copy</span>
+    </li>
+    <li class="feature-item">
+      <span class="feature-icon">📰</span>
+      <span class="feature-text">Blog Posts & Articles</span>
+    </li>
+    <li class="feature-item">
+      <span class="feature-icon">📱</span>
+      <span class="feature-text">Social Media Content</span>
+    </li>
+    <li class="feature-item">
+      <span class="feature-icon">📧</span>
+      <span class="feature-text">Email Campaigns</span>
+    </li>
+    <li class="feature-item">
+      <span class="feature-icon">📖</span>
+      <span class="feature-text">Brand Storytelling</span>
+    </li>
+    <li class="feature-item">
+      <span class="feature-icon">📊</span>
+      <span class="feature-text">Content Strategy</span>
+    </li>
+  </ul>
+
+  <h3 class="text-gradient">Our Content Process</h3>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <h4 class="text-white">Research</h4>
+      <p class="text-navy-300 dark:text-navy-300 mt-2">We analyze your audience, industry, and competitors to develop effective content strategies.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <h4 class="text-white">Creation</h4>
+      <p class="text-navy-300 dark:text-navy-300 mt-2">Our expert writers craft engaging content that aligns with your brand voice and goals.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <h4 class="text-white">Optimization</h4>
+      <p class="text-navy-300 dark:text-navy-300 mt-2">We optimize content for search engines and user engagement to maximize impact.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">4</div>
+      <h4 class="text-white">Distribution</h4>
+      <p class="text-navy-300 dark:text-navy-300 mt-2">Strategic content distribution across relevant channels to reach your target audience.</p>
+    </div>
+  </div>
+
+  <h3 class="text-gradient">Why Content Creation Matters</h3>
+  <div class="benefits-grid">
+    {[
+      'Build brand authority and trust',
+      'Engage and educate your audience',
+      'Drive organic traffic and leads',
+      'Improve search engine rankings',
+      'Support marketing campaigns'
+    ].map((benefit) => (
+      <div class="benefit-item">
+        <svg class="w-6 h-6 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <span class="text-navy-300 dark:text-navy-300">{benefit}</span>
+      </div>
+    ))}
+  </div>
+</ServiceLayout>
+
+<style>
+  .text-gradient {
+    background: linear-gradient(to right, #22c55e, #16a34a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .feature-list {
+    @apply grid gap-6 md:grid-cols-2 mt-8;
+  }
+
+  .feature-item {
+    @apply flex items-center space-x-4 p-4 bg-navy-400/30 dark:bg-navy-600/30 rounded-xl transition-transform duration-300 hover:transform hover:scale-105;
+  }
+
+  .feature-icon {
+    @apply text-2xl;
+  }
+
+  .feature-text {
+    @apply text-navy-300 dark:text-navy-300;
+  }
+
+  .process-steps {
+    @apply grid gap-8 md:grid-cols-2 mt-8;
+  }
+
+  .process-step {
+    @apply relative p-6 bg-navy-400/30 dark:bg-navy-600/30 rounded-xl border border-primary-500/10;
+  }
+
+  .step-number {
+    @apply absolute -top-4 -left-4 w-8 h-8 bg-primary-500 text-white rounded-full flex items-center justify-center font-bold;
+  }
+
+  .benefits-grid {
+    @apply grid gap-4 mt-8;
+  }
+
+  .benefit-item {
+    @apply flex items-center space-x-4 p-4 bg-navy-400/30 dark:bg-navy-600/30 rounded-xl transition-all duration-300 hover:bg-navy-400/50;
+  }
+
+  .feature-description {
+    @apply text-navy-300 dark:text-navy-300;
+  }
+
+  .process-description {
+    @apply text-navy-300 dark:text-navy-300 mt-2;
+  }
+
+  .benefit-description {
+    @apply text-navy-300 dark:text-navy-300;
+  }
+</style>

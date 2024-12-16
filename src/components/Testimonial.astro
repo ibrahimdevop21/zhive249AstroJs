@@ -1,17 +1,155 @@
 ---
-import Container from "./Container.astro"
-import Topic from "./Topic.astro"
-import SwiperSlider from "./SwiperSlider.astro";
+import Container from "./Container.astro";
+
+const testimonials = [
+  {
+    content: "Zhive249 transformed our digital presence completely. Their strategic approach and creative solutions helped us achieve remarkable growth in just months.",
+    author: "Sarah Anderson",
+    role: "CEO, TechVision",
+    rating: 5
+  },
+  {
+    content: "Working with Zhive249 has been a game-changer for our business. Their team's expertise in digital marketing is unmatched.",
+    author: "Michael Zhang",
+    role: "Marketing Director, InnovateCorp",
+    rating: 5
+  },
+  {
+    content: "The results we've seen since partnering with Zhive249 have exceeded our expectations. They truly understand the digital landscape.",
+    author: "Emma Roberts",
+    role: "Founder, StyleHub",
+    rating: 5
+  }
+];
+
+const stats = [
+  { value: '150+', label: 'Projects Completed' },
+  { value: '98%', label: 'Client Satisfaction' },
+  { value: '150%', label: 'Average ROI' },
+];
 ---
-<Container>
-<div class="relative flex flex-col items-center md:flex-row">
-    <Topic title="Testimonials" description="Hear from Our Satisfied Clients: Read Our Testimonials to Learn More about Our Digital Marketing Services" />
-</div>
 
-<div class="rounded-[45px] bg-black mb-[150px] text-white">
-    <SwiperSlider />
-</div>
+<section class="relative py-24 sm:py-32 bg-navy-800">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 bg-grid-navy-700/20 bg-[size:20px_20px]"></div>
+  
+  <!-- Gradient Overlays -->
+  <div class="absolute inset-0">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 via-transparent to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-navy-300/20 to-transparent"></div>
+  </div>
 
-</Container>
+  <Container>
+    <!-- Section Header -->
+    <div class="relative max-w-2xl mx-auto text-center mb-16">
+      <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-4">
+        Trusted by Businesses Worldwide
+      </h2>
+      <p class="text-lg leading-8 text-navy-200">
+        Don't just take our word for it - hear from some of our satisfied clients about their experience working with us.
+      </p>
+    </div>
 
-<!-- todo: edit the content of the  testimonial -->
+    <!-- Stats Section -->
+    <div class="relative mx-auto max-w-5xl mb-16">
+      <div class="grid grid-cols-1 gap-y-12 sm:grid-cols-3 sm:gap-x-6">
+        {stats.map(stat => (
+          <div class="text-center">
+            <div class="text-4xl font-bold tracking-tight text-white">
+              {stat.value}
+            </div>
+            <div class="mt-1 text-base text-navy-300">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto max-w-7xl">
+      <!-- Decorative Elements -->
+      <div class="absolute -left-4 -top-4 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute -right-4 -bottom-4 w-72 h-72 bg-accent-500/10 rounded-full blur-3xl"></div>
+
+      {testimonials.map((testimonial, index) => (
+        <div 
+          class="relative group animate-slide-up"
+          style={`animation-delay: ${index * 200}ms`}
+        >
+          <!-- Card Background with Gradient Border -->
+          <div class="absolute -inset-px bg-gradient-to-r from-primary-500/50 to-accent-500/50 rounded-2xl blur transition duration-300 group-hover:opacity-100 opacity-75"></div>
+          <div class="relative h-full p-px bg-navy-700/50 rounded-2xl overflow-hidden">
+            <div class="relative h-full bg-navy-800/90 rounded-2xl p-8">
+              <!-- Rating Stars -->
+              <div class="flex gap-1 mb-6">
+                {Array.from({ length: testimonial.rating }).map(() => (
+                  <svg class="w-5 h-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+
+              <!-- Quote Icon -->
+              <div class="absolute top-6 right-8">
+                <svg class="w-8 h-8 text-primary-500/20" fill="currentColor" viewBox="0 0 32 32">
+                  <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H6c0-2.2 1.8-4 4-4V8zm18 0c-3.3 0-6 2.7-6 6v10h10V14h-8c0-2.2 1.8-4 4-4V8z"/>
+                </svg>
+              </div>
+
+              <!-- Testimonial Content -->
+              <blockquote class="text-lg text-navy-200 mb-6">
+                "{testimonial.content}"
+              </blockquote>
+
+              <!-- Author Info -->
+              <div class="mt-auto">
+                <div class="font-semibold text-white">
+                  {testimonial.author}
+                </div>
+                <div class="text-sm text-navy-300">
+                  {testimonial.role}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA Section -->
+    <div class="relative mt-24 text-center">
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-primary-500 hover:bg-primary-600 rounded-xl transition-colors duration-300 group"
+      >
+        Start Your Success Story
+        <svg 
+          class="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1" 
+          viewBox="0 0 20 20" 
+          fill="currentColor"
+        >
+          <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </Container>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+</style>
