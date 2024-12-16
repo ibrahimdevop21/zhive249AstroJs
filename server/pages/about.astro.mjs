@@ -1,7 +1,7 @@
 /* empty css                                 */
 import { e as createAstro, f as createComponent, r as renderTemplate, m as maybeRenderHead, h as addAttribute, i as renderComponent } from '../chunks/astro/server_B6M6a8VB.mjs';
 import 'kleur/colors';
-import { $ as $$Container, a as $$Layout } from '../chunks/Layout_C-UG3DlI.mjs';
+import { $ as $$Container, a as $$Layout } from '../chunks/Layout_BNk4G0_9.mjs';
 import 'clsx';
 /* empty css                                 */
 export { renderers } from '../renderers.mjs';
@@ -22,50 +22,8 @@ const $$About = createComponent(($$result, $$props, $$slots) => {
   ];
   const teamMembers = [
     {
-      name: "Ibrahim",
-      role: "Technical Director",
-      bio: "The wizard behind the code who turned coffee into successful businesses! With a track record in export/import, wholesale, and web development, Ibrahim can build anything from international trade routes to stunning websites. When not crafting elegant code, he's probably dreaming up the next big e-commerce revolution or debugging with a smile. \u{1F680}\u2615",
-      image: "/team/ibrahim.jpeg",
-      social: {
-        linkedin: "https://linkedin.com/in/ibrahimdevop21",
-        github: "https://github.com/ibrahimdevop21",
-        email: "ibrahim.mohamed@zhive249.com"
-      }
-    },
-    {
-      name: "Yousef (Joe)",
-      role: "Sales Director",
-      bio: "Known to everyone as Joe, he's our master of making connections and closing deals! With his charismatic approach and deep understanding of client needs, Joe can sell ice to penguins - but he'd rather help businesses achieve their digital dreams. \u{1F91D}\u2728",
-      image: "/team/joe.jpeg",
-      social: {
-        linkedin: "https://www.linkedin.com/in/yousif-el-hosiny/",
-        email: "yousif.elhosiny@zhive249.com"
-      }
-    },
-    {
-      name: "Ahmed",
-      role: "Flutter Developer & Jack of All Trades",
-      bio: "Meet our resident joker and problem-solving wizard! \u{1F0CF} Whether you need a slick Flutter app, market insights, or content magic, Ahmed's your go-to guy. He's like our Swiss Army knife - equipped with coding skills, creative thinking, and a dash of humor to make every challenge fun. Need help? Just look for the guy with all the answers and the contagious laugh! \u{1F4A1}\u2728",
-      image: "/team/ahmed.jpeg",
-      social: {
-        email: "ahmed.ibrahim@zhive249.com",
-        github: "https://github.com/shegzibar",
-        linkedin: "https://www.linkedin.com/in/ahmed-esa-46488a172/"
-      }
-    },
-    {
-      name: "Shahd",
-      role: "Public Relations Director",
-      bio: "Our ray of sunshine and master of connections! With her infectious energy and quick wit, Shahd keeps our office buzzing with laughter. But watch out when the glasses come off - that's when you know she means business! \u{1F60A} When not brightening everyone's day, she's crafting the perfect PR strategies. \u2728",
-      image: "/team/shahd.jpeg",
-      social: {
-        email: "shahd.minalla@zhive249.com",
-        instagram: "https://www.instagram.com/shahdminalla"
-      }
-    },
-    {
       name: "Waad Khalid",
-      role: "Administrative Commander & Project Manager",
+      role: "Project Manager & Senior Researcher",
       bio: "Meet our deadline ninja with the sweetest smile! \u{1F31F} Waad keeps our projects running like clockwork with her perfect blend of charm and efficiency. She'll kindly remind you about your tasks... until you miss a deadline - then watch out for that same smile, because it means business! \u{1F4CA} The secret to staying on her good side? Simple: just get your work done on time! \u23F0\u2728",
       image: "/team/waad-kh.jpeg",
       social: {
@@ -83,11 +41,53 @@ const $$About = createComponent(($$result, $$props, $$slots) => {
       }
     },
     {
+      name: "Shahd",
+      role: "Public Relations Director",
+      bio: "Our ray of sunshine and master of connections! With her infectious energy and quick wit, Shahd keeps our office buzzing with laughter. But watch out when the glasses come off - that's when you know she means business! \u{1F60A} When not brightening everyone's day, she's crafting the perfect PR strategies. \u2728",
+      image: "/team/shahd.jpeg",
+      social: {
+        email: "shahd.minalla@zhive249.com",
+        instagram: "https://www.instagram.com/shahdminalla"
+      }
+    },
+    {
+      name: "Ibrahim",
+      role: "Technical Director",
+      bio: "The wizard behind the code who turned coffee into successful businesses! With a track record in export/import, wholesale, and web development, Ibrahim can build anything from international trade routes to stunning websites. When not crafting elegant code, he's probably dreaming up the next big e-commerce revolution or debugging with a smile. \u{1F680}\u2615",
+      image: "/team/ibrahim.jpeg",
+      social: {
+        linkedin: "https://linkedin.com/in/ibrahimdevop21",
+        github: "https://github.com/ibrahimdevop21",
+        email: "ibrahim.mohamed@zhive249.com"
+      }
+    },
+    {
+      name: "Ahmed",
+      role: "Flutter Developer & Jack of All Trades",
+      bio: "Meet our resident joker and problem-solving wizard! \u{1F0CF} Whether you need a slick Flutter app, market insights, or content magic, Ahmed's your go-to guy. He's like our Swiss Army knife - equipped with coding skills, creative thinking, and a dash of humor to make every challenge fun. Need help? Just look for the guy with all the answers and the contagious laugh! \u{1F4A1}\u2728",
+      image: "/team/ahmed.jpeg",
+      social: {
+        email: "ahmed.ibrahim@zhive249.com",
+        github: "https://github.com/shegzibar",
+        linkedin: "https://www.linkedin.com/in/ahmed-esa-46488a172/"
+      }
+    },
+    {
       name: "Shams",
       role: "Senior Designer & UI/UX Director",
       bio: "Our creative mastermind who turns pixels into pure magic! \u2728 With an eye for detail and a passion for user-centered design, Shams crafts digital experiences that not only look stunning but feel intuitive and delightful. From wireframes to polished interfaces, she's the artist behind our visual storytelling. \u{1F3A8} When she's not pushing pixels to perfection, she's dreaming up new ways to make our users smile! \u{1F31F}",
       image: "/team/shams.jpeg",
       social: {}
+    },
+    {
+      name: "Yousef (Joe)",
+      role: "Sales Director",
+      bio: "Known to everyone as Joe, he's our master of making connections and closing deals! With his charismatic approach and deep understanding of client needs, Joe can sell ice to penguins - but he'd rather help businesses achieve their digital dreams. \u{1F91D}\u2728",
+      image: "/team/joe.jpeg",
+      social: {
+        linkedin: "https://www.linkedin.com/in/yousif-el-hosiny/",
+        email: "yousif.elhosiny@zhive249.com"
+      }
     }
   ];
   const values = [
