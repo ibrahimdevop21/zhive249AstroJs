@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import node from "@astrojs/node";
+import vercel from "@astrojs/vercel/serverless";
 import compress from "astro-compress";
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
@@ -23,15 +23,10 @@ export default defineConfig({
       Logger: 1,
     }),
     sitemap(),
-    robotsTxt(),
-    node({
-      mode: "standalone"
-    })
+    robotsTxt()
   ],
   output: 'server',
-  adapter: node({
-    mode: "standalone"
-  }),
+  adapter: vercel(),
   markdown: {
     shikiConfig: {
       theme: 'github-dark',
