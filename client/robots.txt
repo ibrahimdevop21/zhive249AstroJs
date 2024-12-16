@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zhive249.com/sitemap-index.xml
