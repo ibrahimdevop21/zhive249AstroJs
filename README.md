@@ -2,7 +2,7 @@
 
 A modern, fast, and accessible website for Zhive249 digital agency, built with Astro and TailwindCSS.
 
-[![Built with Astro](https://astro.badgen.net/badge/built%20with/Astro/purple)](https://astro.build)
+[![Built with Astro](https://img.shields.io/badge/built%20with-Astro-FF5A00.svg?style=flat&logo=Astro&logoColor=white)](https://astro.build/)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=flat&logo=Tailwind-CSS&logoColor=white)](https://tailwindcss.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6.svg?style=flat&logo=TypeScript&logoColor=white)](https://www.typescriptlang.org)
 
