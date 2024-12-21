@@ -7,6 +7,7 @@ import robotsTxt from 'astro-robots-txt';
 export default defineConfig({
   site: 'https://zhive249.com',
   base: '/',
+  output: 'static',
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'hover'
@@ -24,7 +25,6 @@ export default defineConfig({
     sitemap(),
     robotsTxt()
   ],
-  output: 'static',
   markdown: {
     shikiConfig: {
       theme: 'github-dark',
