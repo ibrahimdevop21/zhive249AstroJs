@@ -3,6 +3,11 @@ import "../styles/global.css";
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import { siteConfig } from '../config';
+import { Analytics } from "@vercel/analytics/react"; 
+
+const siteUrl = import.meta.env.SITE_URL;
+const contactEmail = import.meta.env.CONTACT_EMAIL;
+const googleAnalyticsId = import.meta.env.GOOGLE_ANALYTICS_ID;
 
 interface Props {
   title?: string;
@@ -199,6 +204,15 @@ Object.entries(securityHeaders).forEach(([header, value]) => {
         });
       }
     </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){window.dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${googleAnalyticsId}');
+    </script>
   </head>
   <body class="bg-navy-700 text-navy-100 font-SpaceGrotesk">
     <!-- Skip to main content -->
@@ -213,6 +227,9 @@ Object.entries(securityHeaders).forEach(([header, value]) => {
     </main>
 
     <Footer />
+
+    <!-- Remove Vercel Analytics -->
+    <!-- <Analytics /> -->
 
     <!-- Analytics (only in production) -->
     {import.meta.env.PROD && import.meta.env.GOOGLE_ANALYTICS_ID && (

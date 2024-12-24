@@ -1,39 +1,49 @@
 ---
-interface Props {
-  service: {
-    id: number;
-    name1: string;
-    name2: string;
-    background: string;
-    arrow: string;
-    link: string;
-    image: string;
-    description: string;
-  };
-}
-
 const { service } = Astro.props;
 ---
 
-<div class={service.background}>
-  <div class="space-y-6 max-w-md">
-    <h3 class="text-3xl font-bold">
-      {service.name1}
-      <br />
-      {service.name2}
-    </h3>
-    <p class="text-lg">{service.description}</p>
-    <a 
-      href={service.link}
-      class="inline-flex items-center text-lg font-medium hover:opacity-75 transition-opacity"
-    >
-      Learn more
-      <img src={service.arrow} alt="" class="ml-2 w-6 h-6" aria-hidden="true" />
-    </a>
+<div class={`${service.background} p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300`}>
+  <div class="flex flex-col justify-between h-full">
+    <!-- Service Titles -->
+    <div class="mb-4">
+      <div class="text-3xl font-medium text-gray-900">{service.name1}</div>
+      <div class="text-3xl font-medium text-gray-900">{service.name2}</div>
+    </div>
+
+    <!-- Learn More Button -->
+    <div class="flex flex-col items-start">
+      <button 
+        class="flex items-center gap-4 mt-auto text-custom-blue font-medium text-xl hover:text-custom-dark-blue transition"
+        on:click={() => toggleDescription(service.name1)}
+      >
+        <img class="w-10 h-10" src={service.arrow} alt="Arrow icon" />
+        <span id={`more-text-${service.name1}`}>Read more</span>
+        <span id={`show-less-${service.name1}`} class="hidden">Show less</span>
+      </button>
+
+      <!-- Description, initially hidden -->
+      <p id={`description-${service.name1}`} class="text-lg text-gray-600 mt-4 hidden">{service.description}</p>
+    </div>
   </div>
-  <img 
-    src={service.image} 
-    alt={`${service.name1} ${service.name2} illustration`} 
-    class="w-64 h-64 object-contain"
-  />
+
+  <!-- Service Image -->
+  <div class="mt-6">
+    <img 
+      src={service.image} 
+      alt={`${service.name1} and ${service.name2} Service Illustration`} 
+      class="hidden md:block w-[210px] h-[170px] mx-auto"
+    />
+  </div>
 </div>
+
+<script>
+  function toggleDescription(id) {
+    const description = document.getElementById(`description-${id}`);
+    const moreText = document.getElementById(`more-text-${id}`);
+    const showLess = document.getElementById(`show-less-${id}`);
+    
+    description.classList.toggle('hidden');
+    moreText.classList.toggle('hidden');
+    showLess.classList.toggle('hidden');
+  }
+</script>

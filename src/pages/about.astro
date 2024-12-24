@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Container from '../components/Container.astro';
-import TeamGrid from '../components/TeamGrid.astro';
+import PentagonTeam from '../components/PentagonTeam.astro';
+import ContributingAssets from '../components/ContributingAssets.astro';
 
 const stats = [
   { value: '50+', label: 'Years Combined Experience', icon: '🏆' },
@@ -9,11 +10,12 @@ const stats = [
   { value: '50+', label: 'Happy Clients', icon: '😊' }
 ];
 
-const teamMembers = [
+// First 5 team members for pentagon layout
+const coreTeam = [
   {
     name: 'Waad Khalid',
     role: 'Project Manager & Senior Researcher',
-    bio: 'Meet our deadline ninja with the sweetest smile! 🌟 Waad keeps our projects running like clockwork with her perfect blend of charm and efficiency. She\'ll kindly remind you about your tasks... until you miss a deadline - then watch out for that same smile, because it means business! 📊 The secret to staying on her good side? Simple: just get your work done on time! ⏰✨',
+    bio: 'Meet our deadline ninja with the sweetest smile! 🌟 Waad keeps our projects running like clockwork with her perfect blend of charm and efficiency.',
     image: '/team/waad-kh.jpeg',
     social: {
       email: 'waad.minalla@zhive249.com',
@@ -23,7 +25,7 @@ const teamMembers = [
   {
     name: 'Waad',
     role: 'Finance & HR Manager',
-    bio: 'Need a new laptop or tool? Waad\'s your financial fairy godmother! 💫 As our master of budgets and keeper of resources, she makes sure everyone has what they need to shine. Just make sure to justify that fancy new gadget - she\'s got a keen eye for both numbers and talent! 💼 When she\'s not managing finances, she\'s taking care of our team as our HR extraordinaire. 🌟',
+    bio: 'Need a new laptop or tool? Waad\'s your financial fairy godmother! 💫 As our master of budgets and keeper of resources.',
     image: '/team/waad.jpeg',
     social: {
       email: 'waad.ibrahim@zhive249.com'
@@ -32,7 +34,7 @@ const teamMembers = [
   {
     name: 'Shahd',
     role: 'Public Relations Director',
-    bio: 'Our ray of sunshine and master of connections! With her infectious energy and quick wit, Shahd keeps our office buzzing with laughter. But watch out when the glasses come off - that\'s when you know she means business! 😊 When not brightening everyone\'s day, she\'s crafting the perfect PR strategies. ✨',
+    bio: 'Our ray of sunshine and master of connections! With her infectious energy and quick wit, Shahd keeps our office buzzing with laughter.',
     image: '/team/shahd.jpeg',
     social: {
       email: 'shahd.minalla@zhive249.com',
@@ -42,40 +44,52 @@ const teamMembers = [
   {
     name: 'Ibrahim',
     role: 'Technical Director',
-    bio: 'The wizard behind the code who turned coffee into successful businesses! With a track record in export/import, wholesale, and web development, Ibrahim can build anything from international trade routes to stunning websites. When not crafting elegant code, he\'s probably dreaming up the next big e-commerce revolution or debugging with a smile. 🚀☕',
+    bio: 'The wizard behind the code who turned coffee into successful businesses! With a track record in export/import, wholesale, and web development.',
     image: '/team/ibrahim.jpeg',
     social: {
-      linkedin: 'https://linkedin.com/in/ibrahimdevop21',
-      github: 'https://github.com/ibrahimdevop21',
-      email: 'ibrahim.mohamed@zhive249.com'
+      email: 'ibrahim@zhive249.com',
+      linkedin: 'https://www.linkedin.com/in/ibrahimdevop21',
+      github: 'https://www.github.com/ibrahimdevop21'
     }
   },
   {
     name: 'Ahmed',
-    role: 'Flutter Developer & Jack of All Trades',
-    bio: 'Meet our resident joker and problem-solving wizard! 🃏 Whether you need a slick Flutter app, market insights, or content magic, Ahmed\'s your go-to guy. He\'s like our Swiss Army knife - equipped with coding skills, creative thinking, and a dash of humor to make every challenge fun. Need help? Just look for the guy with all the answers and the contagious laugh! 💡✨',
+    role: 'Creative Director',
+    bio: 'Our creative mastermind who brings ideas to life! Ahmed\'s designs are not just visually stunning but tell compelling stories.',
     image: '/team/ahmed.jpeg',
     social: {
-      email: 'ahmed.ibrahim@zhive249.com',
-      github: 'https://github.com/shegzibar',
-      linkedin: 'https://www.linkedin.com/in/ahmed-esa-46488a172/'
+      email: 'ahmed@zhive249.com'
     }
   },
   {
-    name: 'Shams',
-    role: 'Senior Designer & UI/UX Director',
-    bio: 'Our creative mastermind who turns pixels into pure magic! ✨ With an eye for detail and a passion for user-centered design, Shams crafts digital experiences that not only look stunning but feel intuitive and delightful. From wireframes to polished interfaces, she\'s the artist behind our visual storytelling. 🎨 When she\'s not pushing pixels to perfection, she\'s dreaming up new ways to make our users smile! 🌟',
-    image: '/team/shams.jpeg',
-    social: {}
+    name: 'Shams El-din',
+    role: 'Creative Director',
+    bio: 'Our creative mastermind who brings ideas to life! Shams\'s designs are not just visually stunning but tell compelling stories.',
+    image: '/team/Shams.webp',
+    social: {
+      email: ''
+      }
   },
+];
+
+// Last 2 team members for contributing assets
+const contributingTeam = [
   {
-    name: 'Yousef (Joe)',
-    role: 'Sales Director',
-    bio: 'Known to everyone as Joe, he\'s our master of making connections and closing deals! With his charismatic approach and deep understanding of client needs, Joe can sell ice to penguins - but he\'d rather help businesses achieve their digital dreams. 🤝✨',
+    name: 'Youssif El-Housiny',
+    role: 'Sales ',
+    bio: 'Sarah brings fresh perspectives and innovative content strategies to our projects.',
     image: '/team/joe.jpeg',
     social: {
-      linkedin: 'https://www.linkedin.com/in/yousif-el-hosiny/',
-      email: 'yousif.elhosiny@zhive249.com'
+      email: 'sarah@zhive249.com'
+    }
+  },
+  {
+    name: 'Ahmed Abo-Elela',
+    role: 'legal ',
+    bio: 'Shams ensures our digital experiences are not just beautiful but also intuitive and user-friendly.',
+    image: '/team/Shams.webp',
+    social: {
+      email: 'mohammed@zhive249.com'
     }
   }
 ];
@@ -167,6 +181,30 @@ const values = [
       </Container>
     </section>
 
+    <!-- Core Team Section -->
+    <section class="py-24 bg-navy-800 relative overflow-hidden">
+      <div class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+      <Container>
+        <div class="mx-auto max-w-2xl text-center mb-16">
+          <h2 class="text-3xl font-medium tracking-tight sm:text-4xl mb-4">Meet Our Team</h2>
+          <p class="text-lg text-gray-300">The passionate individuals behind Zhive249's success</p>
+        </div>
+        <PentagonTeam teamMembers={coreTeam} />
+      </Container>
+    </section>
+
+    <!-- Contributing Assets Section -->
+    <section class="py-24 bg-navy-900 relative overflow-hidden">
+      <div class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+      <Container>
+        <div class="mx-auto max-w-2xl text-center mb-16">
+          <h2 class="text-3xl font-medium tracking-tight sm:text-4xl mb-4">Contributing Assets</h2>
+          <p class="text-lg text-gray-300">The talented individuals who help make our vision a reality</p>
+        </div>
+        <ContributingAssets contributors={contributingTeam} />
+      </Container>
+    </section>
+
     <!-- Values Section with Hover Effects -->
     <section class="py-24 relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-b from-navy-900 to-navy-800"></div>
@@ -189,20 +227,6 @@ const values = [
             </div>
           ))}
         </div>
-      </Container>
-    </section>
-
-    <!-- Team Section with Enhanced Cards -->
-    <section class="py-24 bg-navy-800 relative overflow-hidden">
-      <div class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
-      <Container>
-        <div class="mx-auto max-w-2xl text-center">
-          <h2 class="text-3xl font-medium tracking-tight sm:text-4xl">Meet Our Team</h2>
-          <p class="mt-4 text-lg text-navy-300">
-            Our diverse team of experts brings together years of experience and a passion for digital innovation.
-          </p>
-        </div>
-        <TeamGrid members={teamMembers} />
       </Container>
     </section>
 
@@ -248,3 +272,13 @@ const values = [
     animation: gradient 15s ease infinite;
   }
 </style>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WCTR5L70NZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WCTR5L70NZ');
+</script>

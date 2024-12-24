@@ -5,8 +5,6 @@ interface NavItem {
   name: string;
   href: string;
   isButton?: boolean;
-  isDropdown?: boolean;
-  dropdownItems?: Array<{name: string, href: string}>;
 }
 
 const menuItems: NavItem[] = [
@@ -18,15 +16,7 @@ const menuItems: NavItem[] = [
   { 
     name: 'Services', 
     href: '/services',
-    isDropdown: true,
-    dropdownItems: [
-      { name: 'Creative Branding', href: '/services/creative-branding' },
-      { name: 'Web Development', href: '/services/web-development' },
-      { name: 'Market Research', href: '/services/market-research' },
-      { name: 'Digital Marketing', href: '/services/digital-marketing' },
-      { name: 'Content Creation', href: '/services/content-creation' },
-      { name: 'Analytics & Optimization', href: '/services/analytics-optimization' }
-    ]
+    isButton: false
   },
   { 
     name: 'About Us', 
@@ -49,8 +39,7 @@ const pathname = new URL(Astro.request.url).pathname;
       <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="/images/Logo.svg" class="h-8" alt="Zhive Logo" />
         <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-accent-500">
-          Zhive
-          <span class="text-primary-500">249</span>
+          Zhive<span class="text-white">249</span>
         </span>
       </a>
 
@@ -68,53 +57,20 @@ const pathname = new URL(Astro.request.url).pathname;
         </svg>
       </button>
 
-      <!-- Desktop and Mobile menu container -->
+      <!-- Menu items -->
       <div class="hidden w-full md:block md:w-auto" id="navbar">
         <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0">
           {
             menuItems.map((item) => (
-              <li class="relative group">
-                {item.isDropdown ? (
-                  <>
-                    <button
-                      class="flex items-center justify-between w-full py-2 px-3 text-dark-400 dark:text-dark-300 hover:text-primary-500 dark:hover:text-primary-400 md:hover:bg-transparent md:border-0 md:p-0 md:w-auto"
-                      aria-expanded="false"
-                      aria-controls="navbar-dropdown"
-                    >
-                      <a href={item.href} class="hover:text-primary-500">{item.name}</a>
-                      <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                      </svg>
-                    </button>
-                    <div id="navbar-dropdown" class="invisible absolute z-10 md:group-hover:visible font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                      <ul class="py-2 text-sm text-gray-700 dark:text-gray-400">
-                        {item.dropdownItems?.map((dropItem) => (
-                          <li>
-                            <a
-                              href={dropItem.href}
-                              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                            >
-                              {dropItem.name}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </>
-                ) : (
-                  <a
-                    href={item.href}
-                    class:list={[
-                      "block py-2 px-3 md:p-0",
-                      item.isButton
-                        ? "text-white bg-primary-500 rounded md:bg-transparent md:text-primary-500"
-                        : "text-dark-400 dark:text-dark-300 hover:text-primary-500 dark:hover:text-primary-400",
-                      pathname === item.href && "text-primary-500 dark:text-primary-400"
-                    ]}
-                  >
-                    {item.name}
-                  </a>
-                )}
+              <li>
+                <a
+                  href={item.href}
+                  class={`block py-2 px-3 text-dark-400 dark:text-dark-300 hover:text-primary-500 dark:hover:text-primary-400 md:p-0 ${
+                    pathname === item.href ? 'text-primary-500' : ''
+                  }`}
+                >
+                  {item.name}
+                </a>
               </li>
             ))
           }
@@ -154,18 +110,5 @@ const pathname = new URL(Astro.request.url).pathname;
 </script>
 
 <style>
-  .group:hover #navbar-dropdown {
-    animation: slideDown 0.3s ease-in-out;
-  }
-
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+  /* Add any custom styles here */
 </style>

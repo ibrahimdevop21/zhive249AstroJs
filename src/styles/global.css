@@ -134,3 +134,14 @@
 .bg-lime {
   background-color: #ff6600;
 }
+
+/* Disable text cursor on click */
+.no-text-cursor::selection {
+  background: transparent;
+}
+
+/* Hide text cursor */
+.no-text-cursor {
+  user-select: none;
+  cursor: default;
+}
