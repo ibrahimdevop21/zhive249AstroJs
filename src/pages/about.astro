@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Container from '../components/Container.astro';
-import PentagonTeam from '../components/PentagonTeam.astro';
+import HexagonTeam from '../components/HexagonTeam.astro';
 import ContributingAssets from '../components/ContributingAssets.astro';
 
 const stats = [
@@ -75,21 +75,21 @@ const coreTeam = [
 // Last 2 team members for contributing assets
 const contributingTeam = [
   {
-    name: 'Youssif El-Housiny',
-    role: 'Sales ',
+    name: 'Osama',
+    role: 'Corporate Account Manager',
     bio: 'Sarah brings fresh perspectives and innovative content strategies to our projects.',
     image: '/team/joe.jpeg',
     social: {
-      email: 'sarah@zhive249.com'
+      email: 'osama@zhive249.com'
     }
   },
   {
     name: 'Ahmed Abo-Elela',
-    role: 'legal ',
+    role: 'Startup Account Manager',
     bio: 'Shams ensures our digital experiences are not just beautiful but also intuitive and user-friendly.',
     image: '/team/Shams.webp',
     social: {
-      email: 'mohammed@zhive249.com'
+      email: 'Ahmed@zhive249.com'
     }
   }
 ];
@@ -189,7 +189,7 @@ const values = [
           <h2 class="text-3xl font-medium tracking-tight sm:text-4xl mb-4">Meet Our Team</h2>
           <p class="text-lg text-gray-300">The passionate individuals behind Zhive249's success</p>
         </div>
-        <PentagonTeam teamMembers={coreTeam} />
+        <HexagonTeam teamMembers={coreTeam} />
       </Container>
     </section>
 

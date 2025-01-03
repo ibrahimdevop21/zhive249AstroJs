@@ -36,20 +36,20 @@ const CACHE_FIRST_PATTERNS = [
 
 // Helper function to determine if URL matches patterns
 function matchesPatterns(url, patterns) {
-  return patterns.some(pattern => pattern.test(url.pathname));
+  return patterns.some((pattern) => pattern.test(url.pathname));
 }
 
 // Helper function to fetch and cache
 async function fetchAndCache(request, cacheName) {
   try {
     const response = await fetch(request);
-    
+
     // Only cache successful GET responses
     if (response.ok && request.method === 'GET') {
       const cache = await caches.open(cacheName);
       cache.put(request, response.clone());
     }
-    
+
     return response;
   } catch (error) {
     // Let the error propagate
@@ -64,18 +64,18 @@ async function networkFirstWithTimeout(request, timeout = 3000) {
     const timeoutPromise = new Promise((_, reject) => {
       setTimeout(() => reject(new Error('Network timeout')), timeout);
     });
-    
+
     const networkResponse = await Promise.race([
       fetch(request),
-      timeoutPromise
+      timeoutPromise,
     ]);
-    
+
     // Cache successful responses
     if (networkResponse.ok && request.method === 'GET') {
       const cache = await caches.open(CACHE_NAMES.pages);
       cache.put(request, networkResponse.clone());
     }
-    
+
     return networkResponse;
   } catch (error) {
     // On failure, try cache
@@ -83,13 +83,13 @@ async function networkFirstWithTimeout(request, timeout = 3000) {
     if (cachedResponse) {
       return cachedResponse;
     }
-    
+
     // If it's a navigation request, return offline page
     if (request.mode === 'navigate') {
       const cache = await caches.open(CACHE_NAMES.static);
       return cache.match(OFFLINE_URL);
     }
-    
+
     throw error;
   }
 }
@@ -107,16 +107,16 @@ async function cacheFirst(request) {
 async function clearOldCaches() {
   const cacheKeys = await caches.keys();
   const validCacheKeys = Object.values(CACHE_NAMES);
-  
+
   return Promise.all(
     cacheKeys
-      .filter(key => !validCacheKeys.includes(key))
-      .map(key => caches.delete(key))
+      .filter((key) => !validCacheKeys.includes(key))
+      .map((key) => caches.delete(key))
   );
 }
 
 // Install event handler
-self.addEventListener('install', event => {
+self.addEventListener('install', (event) => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(CACHE_NAMES.static);
@@ -127,17 +127,12 @@ self.addEventListener('install', event => {
 });
 
 // Activate event handler
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    Promise.all([
-      clearOldCaches(),
-      self.clients.claim(),
-    ])
-  );
+self.addEventListener('activate', (event) => {
+  event.waitUntil(Promise.all([clearOldCaches(), self.clients.claim()]));
 });
 
 // Fetch event handler
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', (event) => {
   // Only handle GET requests
   if (event.request.method !== 'GET') return;
 
@@ -151,12 +146,12 @@ self.addEventListener('fetch', event => {
         if (matchesPatterns(url, NETWORK_FIRST_PATTERNS)) {
           return await networkFirstWithTimeout(event.request);
         }
-        
+
         // Cache-first for static assets
         if (matchesPatterns(url, CACHE_FIRST_PATTERNS)) {
           return await cacheFirst(event.request);
         }
-        
+
         // Default to network-first
         return await networkFirstWithTimeout(event.request);
       } catch (error) {
@@ -165,12 +160,12 @@ self.addEventListener('fetch', event => {
           const cache = await caches.open(CACHE_NAMES.static);
           return cache.match(OFFLINE_URL);
         }
-        
+
         if (event.request.destination === 'image') {
           const cache = await caches.open(CACHE_NAMES.static);
           return cache.match(OFFLINE_IMAGE);
         }
-        
+
         throw error;
       }
     })()

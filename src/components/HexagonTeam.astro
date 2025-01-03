@@ -40,6 +40,11 @@ const { teamMembers } = Astro.props;
       <div
         class="absolute w-48 transition-transform duration-300 hover:scale-110 group team-member z-0"
         data-index={index}
+        role="button"
+        tabindex="0"
+        aria-label={`View ${member.name}'s profile`}
+        aria-expanded="false"
+        data-member-index={index}
       >
         <div class="relative">
           <div class="w-36 h-36 mx-auto rounded-full overflow-hidden border-4 border-primary-500/20 group-hover:border-primary-500/50 transition-colors duration-300">
@@ -94,34 +99,40 @@ const { teamMembers } = Astro.props;
   const centerY = container?.offsetHeight ? container.offsetHeight / 2 : 0;
   const radius = Math.min(centerX, centerY) * 0.47;
 
-  // Create master timeline
+  // Optimize animations with will-change and reduced calculations
   const masterTl = gsap.timeline({
     repeat: -1,
     defaults: { ease: "none" }
   });
 
+  // Pre-calculate angles and positions
+  const teamMembersArray = teamMembers ? Array.from(teamMembers) : [];
+  const angles: number[] = teamMembersArray.map((_, i: number) => (i * 60 - 90) * (Math.PI / 180));
+  const positions: { x: number, y: number }[] = new Array(teamMembersArray.length);
+
   // Position and animate each team member
   teamMembers?.forEach((member, i) => {
-    // Calculate initial position in hexagon formation
-    const startAngle = (i * 60 - 90) * (Math.PI / 180);
-    
+    // Set initial will-change property
+    gsap.set(member, { willChange: 'transform' });
+
     // Create individual timeline for each member
     const tl = gsap.timeline();
     
-    // Animate full rotation while maintaining hexagon formation
+    // Optimized animation with cached calculations
     tl.to(member, {
       duration: 40,
       ease: "none",
       onUpdate: function() {
         const progress = this.progress();
-        // Maintain hexagon spacing (60 degrees) while rotating
-        const currentAngle = startAngle - (progress * Math.PI * 2);
-        const x = centerX + radius * Math.cos(currentAngle);
-        const y = centerY + radius * Math.sin(currentAngle);
+        const currentAngle = angles[i] + (progress * Math.PI * 2);
+        positions[i] = {
+          x: centerX + radius * Math.cos(currentAngle),
+          y: centerY + radius * Math.sin(currentAngle)
+        };
         
         gsap.set(member, {
-          x: x - centerX,
-          y: y - centerY,
+          x: positions[i].x - centerX,
+          y: positions[i].y - centerY,
           rotation: 0
         });
       }
@@ -130,8 +141,8 @@ const { teamMembers } = Astro.props;
     // Add to master timeline
     masterTl.add(tl, 0);
 
-    // Add hover effects with scale and slight glow
-    member.addEventListener('mouseenter', () => {
+    // Add hover and touch effects with scale and slight glow
+    const activateMember = () => {
       gsap.to(member, {
         scale: 1.1,
         filter: 'drop-shadow(0 0 10px rgba(var(--color-primary-500), 0.3))',
@@ -139,9 +150,9 @@ const { teamMembers } = Astro.props;
         ease: "power2.out",
         zIndex: 20
       });
-    });
+    };
 
-    member.addEventListener('mouseleave', () => {
+    const deactivateMember = () => {
       gsap.to(member, {
         scale: 1,
         filter: 'none',
@@ -149,6 +160,45 @@ const { teamMembers } = Astro.props;
         ease: "power2.out",
         zIndex: 0
       });
+    };
+
+    // Mouse events
+    member.addEventListener('mouseenter', activateMember);
+    member.addEventListener('mouseleave', deactivateMember);
+
+    // Touch events
+    member.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      // Deactivate all other members
+      teamMembers?.forEach(m => {
+        if (m !== member) deactivateMember.call(m);
+      });
+      activateMember();
+    });
+
+    // Handle touch outside
+    document.addEventListener('touchstart', (e) => {
+      const target = e.target as Node;
+      if (!member.contains(target)) {
+        deactivateMember();
+      }
+    }, { passive: true });
+  });
+
+  // Add keyboard event listeners
+  teamMembers?.forEach((member) => {
+    member.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const memberElement = e.currentTarget as HTMLElement;
+        gsap.to(memberElement, {
+          scale: 1.1,
+          filter: 'drop-shadow(0 0 10px rgba(var(--color-primary-500), 0.3))',
+          duration: 0.3,
+          ease: "power2.out",
+          zIndex: 20
+        });
+      }
     });
   });
 
@@ -162,7 +212,9 @@ const { teamMembers } = Astro.props;
     teamMembers?.forEach((member, i) => {
       const tweens = gsap.getTweensOf(member);
       tweens.forEach((tween) => {
-        tween.vars.onUpdate();
+        if (tween.vars.onUpdate) {
+          tween.vars.onUpdate();
+        }
       });
     });
   });
